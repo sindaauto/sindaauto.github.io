@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>SINDA AUTO</title>
+    <meta name="google-site-verification" content="nsyzUtvQZv-nhhIYcbCl_etxn8BH98Fo_UpKbjvJAIM" />
+    <meta name="SINDA AUTO" content="Bienvenue sur mon site web officiel. Découvrez nos services et produits.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config for Custom Colors and Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FFF2C6',
+                            300: '#F3D272',
+                            400: '#E6BC47',
+                            500: '#D4AF37',
+                            600: '#AA820A',
+                            700: '#805F00',
+                        },
+                        dark: {
+                            900: '#07080A',
+                            800: '#0F1116',
+                            700: '#171A21',
+                            600: '#222733',
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #07080A;
+            color: #E2E8F0;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF2C6 0%, #D4AF37 50%, #AA820A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .gold-border-glow:hover {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+            border-color: rgba(212, 175, 55, 0.7);
+        }
+
+        .hero-bg {
+            background: linear-gradient(to bottom, rgba(7, 8, 10, 0.60), rgba(7, 8, 10, 0.95)), 
+                        url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+
+        .glass-card {
+            background: rgba(15, 17, 22, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #07080A;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="custom-scrollbar overflow-x-hidden">
+
+    <!-- NOTIFICATION FLOATING CONTAINER -->
+    <div id="toast-container" class="fixed top-24 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- BARRE DE NAVIGATION FIXE -->
+    <header class="fixed w-full z-50 bg-dark-900/90 backdrop-blur-md border-b border-gold-500/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo Sinda Auto -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gold-300 to-gold-600 p-0.5 flex items-center justify-center shadow-lg shadow-gold-500/10">
+                    <div class="w-full h-full bg-dark-900 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-crown text-gold-400 font-bold text-lg"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-cinzel text-xl font-bold tracking-wider gold-gradient-text block leading-none">SINDA AUTO</span>
+                    <span class="text-[9px] font-medium tracking-[0.2em] text-gray-400 uppercase">L'Excellence Automobile</span>
+                </div>
+            </a>
+
+            <!-- Liens de Navigation Desktop -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#accueil" class="text-gold-400 transition hover:text-gold-300">ACCUEIL</a>
+                <a href="#vehicules" class="text-gray-300 hover:text-gold-400 transition">NOTRE PARC</a>
+                <a href="#services" class="text-gray-300 hover:text-gold-400 transition">SERVICES</a>
+                <a href="#avis" class="text-gray-300 hover:text-gold-400 transition">AVIS CLIENTS</a>
+                <a href="#contact" class="text-gray-300 hover:text-gold-400 transition">CONTACT</a>
+            </nav>
+
+            <!-- Boutons d'Action Rapide -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="tel:+21695496396" class="flex items-center gap-2 px-4 py-2 rounded-full border border-gold-500/50 text-gold-400 hover:bg-gold-500/10 transition text-sm font-semibold">
+                    <i class="fa-solid fa-phone text-xs"></i>
+                    <span>95496396</span>
+                </a>
+                <a href="https://wa.me/95496396" target="_blank" class="px-5 py-2 rounded-full bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 font-bold hover:brightness-110 transition shadow-lg shadow-gold-500/20 text-sm flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Contact VIP</span>
+                </a>
+            </div>
+
+            <!-- Bouton Menu Mobile -->
+            <button id="mobile-menu-btn" aria-label="Menu" class="md:hidden text-gold-400 text-2xl focus:outline-none p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile déroulant -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-800 border-b border-gold-500/20 px-6 py-4 space-y-4">
+            <a href="#accueil" class="block text-gold-400 font-medium py-1">Accueil</a>
+            <a href="#vehicules" class="block text-gray-300 hover:text-gold-400 py-1">Notre Parc</a>
+            <a href="#services" class="block text-gray-300 hover:text-gold-400 py-1">Services VIP</a>
+            <a href="#avis" class="block text-gray-300 hover:text-gold-400 py-1">Avis Clients</a>
+            <a href="#contact" class="block text-gray-300 hover:text-gold-400 py-1">Contact & Horaires</a>
+            <div class="pt-3 border-t border-gray-700/60 flex flex-col gap-3">
+                <a href="tel:+21695496396" class="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-dark-700 text-gold-400 border border-gold-500/30 font-semibold">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+21695496396</span>
+                </a>
+                <a href="https://wa.me/95496396" target="_blank" class="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-gold-500 text-dark-900 font-bold">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Message WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION HERO CINÉMATIQUE -->
+    <section id="accueil" class="relative min-h-screen hero-bg flex items-center justify-center pt-24 pb-16 px-4 sm:px-6">
+        <div class="max-w-5xl mx-auto text-center space-y-8 relative z-10 mt-6">
+            
+            <!-- Badge de prestige -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark-800/80 border border-gold-500/40 text-gold-300 text-xs sm:text-sm font-semibold tracking-wider uppercase backdrop-blur-md">
+                <i class="fa-solid fa-crown text-gold-400"></i> Showroom & Vente d'Élite • Bizerte
+            </div>
+
+            <!-- Titre Principal -->
+            <h1 class="font-cinzel text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                VIVEZ LA PASSION DU <br>
+                <span class="gold-gradient-text drop-shadow-lg">LUXE AUTOMOBILE</span>
+            </h1>
+
+            <p class="text-gray-300 text-base sm:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+                Découvrez une sélection exclusive de véhicules d'exception et d'occasion contrôlés avec la plus haute rigueur.
+            </p>
+
+            <!-- Actions Principales -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="#vehicules" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-dark-900 font-bold text-base hover:shadow-xl hover:shadow-gold-500/30 hover:scale-105 transition transform duration-200 flex items-center justify-center gap-3">
+                    <span>Explorer le Parc Prestige</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="tel:+21695496396" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card text-gold-300 hover:text-white hover:border-gold-400 font-semibold text-base transition flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-headset text-gold-400"></i>
+                    <span>Appelez le 95496396</span>
+                </a>
+            </div>
+
+            <!-- Badges d'évaluation & garanties -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12 max-w-4xl mx-auto border-t border-gold-500/20">
+                <div class="p-3 text-center">
+                    <div class="flex justify-center text-gold-400 text-sm mb-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <span class="block text-xl font-bold font-cinzel text-white">4.5 / 5</span>
+                    <span class="text-xs text-gray-400">Note Google (17 Avis)</span>
+                </div>
+                <div class="p-3 text-center">
+                    <i class="fa-solid fa-shield-halved text-gold-400 text-xl mb-1 block"></i>
+                    <span class="block text-xl font-bold font-cinzel text-white">100% Vérifiés</span>
+                    <span class="text-xs text-gray-400">Contrôle Rigoureux</span>
+                </div>
+                <div class="p-3 text-center">
+                    <i class="fa-solid fa-clock text-gold-400 text-xl mb-1 block"></i>
+                    <span class="block text-xl font-bold font-cinzel text-white">7j / 7</span>
+                    <span class="text-xs text-gray-400">08:00 – 18:00</span>
+                </div>
+                <div class="p-3 text-center">
+                    <i class="fa-solid fa-location-dot text-gold-400 text-xl mb-1 block"></i>
+                    <span class="block text-xl font-bold font-cinzel text-white">Bizerte</span>
+                    <span class="text-xs text-gray-400">Autoroute Km 5</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FILTRES ET CATALOGUE DE VÉHICULES -->
+    <section id="vehicules" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+        <div class="text-center space-y-3 mb-12">
+            <h2 class="text-gold-400 font-semibold tracking-widest text-xs sm:text-sm uppercase">Notre Collection</h2>
+            <h3 class="font-cinzel text-3xl sm:text-5xl font-bold text-white">VÉHICULES EN VEDETTE</h3>
+            <div class="w-24 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
+        </div>
+
+        <!-- Filtres de catégorie -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-12" id="filter-buttons">
+            <button onclick="filterCars('all', this)" class="filter-btn active px-6 py-2.5 rounded-full bg-gold-500 text-dark-900 font-bold text-sm transition">Tous les Modèles</button>
+            <button onclick="filterCars('berline', this)" class="filter-btn px-6 py-2.5 rounded-full glass-card text-gray-300 hover:text-gold-400 font-medium text-sm transition">Berlines & Citadines</button>
+            <button onclick="filterCars('suv', this)" class="filter-btn px-6 py-2.5 rounded-full glass-card text-gray-300 hover:text-gold-400 font-medium text-sm transition">SUV & Crossover</button>
+            <button onclick="filterCars('sport', this)" class="filter-btn px-6 py-2.5 rounded-full glass-card text-gray-300 hover:text-gold-400 font-medium text-sm transition">Sport & Coupé</button>
+        </div>
+
+        <!-- Grille des voitures -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="car-grid">
+            
+            <!-- Carte 1:  -->
+            <div class="car-card berline glass-card rounded-2xl overflow-hidden gold-border-glow transition-all duration-300 flex flex-col">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="golf8.jpg" alt="BMW Série 5 Pack M" class="w-full h-full object-cover transform hover:scale-110 transition duration-500" loading="lazy">
+                    <span class="absolute top-4 left-4 bg-gold-500 text-dark-900 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Disponibilité echange</span>
+                    <span class="absolute top-4 right-4 bg-dark-900/80 text-gold-300 font-bold text-sm px-3 py-1 rounded-full border border-gold-500/30">2022</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex flex-col mb-2">
+                            <h4 class="font-cinzel text-xl font-bold text-white">GOLF 8</h4>
+                            <span class="gold-gradient-text font-extrabold text-2xl tracking-wide mt-1"></span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Boîte Automatique • Essance 1.4L / Hybride  • Faible Kilométrage</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-gold-500/10 text-xs text-gray-300 text-center">
+                        <div><i class="fa-solid fa-gauge text-gold-400 block mb-1"></i> 120.000 km</div>
+                        <div><i class="fa-solid fa-bolt text-gold-400 block mb-1"></i> 8 CH</div>
+                        <div><i class="fa-solid fa-gears text-gold-400 block mb-1"></i> auto</div>
+                    </div>
+                    <button onclick="openBookingModal('GOLF 8 FIN DE Série')" class="w-full py-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 font-bold hover:brightness-110 transition text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Réserver un Essai</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Carte 2: Fiat 500 -->
+            <div class="car-card berline glass-card rounded-2xl overflow-hidden gold-border-glow transition-all duration-300 flex flex-col">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="FIAT500.png" alt="Fiat 500 Sinda Auto" class="w-full h-full object-cover transform hover:scale-110 transition duration-500" loading="lazy">
+                    <span class="absolute top-4 left-4 bg-gold-500 text-dark-900 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Disponible</span>
+                    <span class="absolute top-4 right-4 bg-dark-900/80 text-gold-300 font-bold text-sm px-3 py-1 rounded-full border border-gold-500/30">2020</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex flex-col mb-2">
+                            <h4 class="font-cinzel text-xl font-bold text-white">Fiat 500 1.2L Auto</h4>
+                            <span class="gold-gradient-text font-extrabold text-2xl tracking-wide mt-1"></span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Automatique • Essence 1.2L • 4 CV</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-gold-500/10 text-xs text-gray-300 text-center">
+                        <div><i class="fa-solid fa-gauge text-gold-400 block mb-1"></i> 120 000 km</div>
+                        <div><i class="fa-solid fa-gas-pump text-gold-400 block mb-1"></i> Essence</div>
+                        <div><i class="fa-solid fa-gears text-gold-400 block mb-1"></i> Auto</div>
+                    </div>
+                    <button onclick="openBookingModal('Fiat 500 1.2L Auto')" class="w-full py-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 font-bold hover:brightness-110 transition text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Réserver un Essai</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Carte 3: Mercedes Classe C AMG -->
+            <div class="car-card sport berline glass-card rounded-2xl overflow-hidden gold-border-glow transition-all duration-300 flex flex-col">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="mini.jpg" alt="Mini countryMAN" class="w-full h-full object-cover transform hover:scale-110 transition duration-500" loading="lazy">
+                    <span class="absolute top-4 left-4 bg-gold-500 text-dark-900 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">disponibilté echange</span>
+                    <span class="absolute top-4 right-4 bg-dark-900/80 text-gold-300 font-bold text-sm px-3 py-1 rounded-full border border-gold-500/30">2025</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex flex-col mb-2">
+                            <h4 class="font-cinzel text-xl font-bold text-white">Mini countryMAN</h4>
+                            <span class="gold-gradient-text font-extrabold text-2xl tracking-wide mt-1"></span>
+                        </div>
+                        <p class="text-gray-400 text-sm">NOIR peinture métallisee• essance 1.5L • mat:264</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-gold-500/10 text-xs text-gray-300 text-center">
+                        <div><i class="fa-solid fa-gauge text-gold-400 block mb-1"></i> 18.000 km</div>
+                        <div><i class="fa-solid fa-bolt text-gold-400 block mb-1"></i> 8 CH</div>
+                        <div><i class="fa-solid fa-gears text-gold-400 block mb-1"></i> auto</div>
+                    </div>
+                    <button onclick="openBookingModal('Mini countryMAN')" class="w-full py-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 font-bold hover:brightness-110 transition text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Réserver un Essai</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Carte 4: Audi Q8 S-Line -->
+            <div class="car-card suv glass-card rounded-2xl overflow-hidden gold-border-glow transition-all duration-300 flex flex-col">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="nissan.png" alt="Audi Q8 S-Line" class="w-full h-full object-cover transform hover:scale-110 transition duration-500" loading="lazy">
+                    <span class="absolute top-4 left-4 bg-gold-500 text-dark-900 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">disponibilté echange</span>
+                    <span class="absolute top-4 right-4 bg-dark-900/80 text-gold-300 font-bold text-sm px-3 py-1 rounded-full border border-gold-500/30">2013</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex flex-col mb-2">
+                            <h4 class="font-cinzel text-xl font-bold text-white">KIA RIO SEDAN</h4>
+                            <span class="gold-gradient-text font-extrabold text-2xl tracking-wide mt-1"></span>
+                        </div>
+                        <p class="text-gray-400 text-sm">essance 1.2L • Mtr 167  • gris metalise </p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-gold-500/10 text-xs text-gray-300 text-center">
+                        <div><i class="fa-solid fa-gauge text-gold-400 block mb-1"></i> 196.000 km</div>
+                        <div><i class="fa-solid fa-bolt text-gold-400 block mb-1"></i> 5 CV</div>
+                        <div><i class="fa-solid fa-gears text-gold-400 block mb-1"></i> manuelle</div>
+                    </div>
+                    <button onclick="openBookingModal('Audi Q8 S-Line')" class="w-full py-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 font-bold hover:brightness-110 transition text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Réserver un Essai</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Carte 5: Range Rover Evoque -->
+            <div class="car-card suv glass-card rounded-2xl overflow-hidden gold-border-glow transition-all duration-300 flex flex-col">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="metchi.jpg" alt="Range Rover Evoque" class="w-full h-full object-cover transform hover:scale-110 transition duration-500" loading="lazy">
+                    <span class="absolute top-4 left-4 bg-gold-500 text-dark-900 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">disponibilté echange</span>
+                    <span class="absolute top-4 right-4 bg-dark-900/80 text-gold-300 font-bold text-sm px-3 py-1 rounded-full border border-gold-500/30">2021</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex flex-col mb-2">
+                            <h4 class="font-cinzel text-xl font-bold text-white">Chevrolet sonic Ls</h4>
+                            <span class="gold-gradient-text font-extrabold text-2xl tracking-wide mt-1"></span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Essance • Noir peinture métallisée</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-gold-500/10 text-xs text-gray-300 text-center">
+                        <div><i class="fa-solid fa-gauge text-gold-400 block mb-1"></i> 43.000 km</div>
+                        <div><i class="fa-solid fa-bolt text-gold-400 block mb-1"></i> 5 CV</div>
+                        <div><i class="fa-solid fa-gears text-gold-400 block mb-1"></i> manuelle </div>
+                    </div>
+                    <button onclick="openBookingModal('Chevrolet sonic Ls')" class="w-full py-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 font-bold hover:brightness-110 transition text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Réserver un Essai</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Carte 6: Volkswagen Golf 8 R-Line -->
+            <div class="car-card sport berline glass-card rounded-2xl overflow-hidden gold-border-glow transition-all duration-300 flex flex-col">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="mercedes.png" alt="Volkswagen Golf 8 R-Line" class="w-full h-full object-cover transform hover:scale-110 transition duration-500" loading="lazy">
+                    <span class="absolute top-4 left-4 bg-gold-500 text-dark-900 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">vendu</span>
+                    <span class="absolute top-4 right-4 bg-dark-900/80 text-gold-300 font-bold text-sm px-3 py-1 rounded-full border border-gold-500/30">2022</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex flex-col mb-2">
+                            <h4 class="font-cinzel text-xl font-bold text-white">SKODA fabia</h4>
+                            <span class="gold-gradient-text font-extrabold text-2xl tracking-wide mt-1"></span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Essance 1L • Matr 230 • bleu métallisee•</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-3 border-y border-gold-500/10 text-xs text-gray-300 text-center">
+                        <div><i class="fa-solid fa-gauge text-gold-400 block mb-1"></i> 130. 000 km</div>
+                        <div><i class="fa-solid fa-bolt text-gold-400 block mb-1"></i> 5CV</div>
+                        <div><i class="fa-solid fa-gears text-gold-400 block mb-1"></i> manuelle </div>
+                    </div>
+                    <button onclick="openBookingModal('Volkswagen Golf 8 R-Line')" class="w-full py-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 font-bold hover:brightness-110 transition text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Réserver un Essai</span>
+                    </button>
+                </div>
+            </div>
+
+
+            
+            <div class="car-card sport berline glass-card rounded-2xl overflow-hidden gold-border-glow transition-all duration-300 flex flex-col">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="mercedes.png" alt="Mini countryMAN" class="w-full h-full object-cover transform hover:scale-110 transition duration-500" loading="lazy">
+                    <span class="absolute top-4 left-4 bg-gold-500 text-dark-900 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">disponibilté echange</span>
+                <span class="absolute top-4 right-4 bg-dark-900/80 text-gold-300 font-bold text-sm px-3 py-1 rounded-full border border-gold-500/30">2025</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                <div>
+                    <div class="flex flex-col mb-2">
+                        <h4 class="font-cinzel text-xl font-bold text-white">Mini countryMAN</h4>
+                        <span class="gold-gradient-text font-extrabold text-2xl tracking-wide mt-1"></span>
+                    </div>
+                    <p class="text-gray-400 text-sm">NOIR peinture métallisee• essance 1.5L • mat:264</p>
+                </div>
+                <div class="grid grid-cols-3 gap-2 py-3 border-y border-gold-500/10 text-xs text-gray-300 text-center">
+                    <div><i class="fa-solid fa-gauge text-gold-400 block mb-1"></i> 18.000 km</div>
+                    <div><i class="fa-solid fa-bolt text-gold-400 block mb-1"></i> 8 CH</div>
+                    <div><i class="fa-solid fa-gears text-gold-400 block mb-1"></i> auto</div>
+                </div>
+                <button onclick="openBookingModal('Mini countryMAN')" class="w-full py-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-dark-900 font-bold hover:brightness-110 transition text-sm flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Réserver un Essai</span>
+                </button>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- SECTION SERVICES D'EXCELLENCE -->
+    <section id="services" class="py-20 bg-dark-800/60 border-y border-gold-500/10 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center space-y-3 mb-16">
+                <h2 class="text-gold-400 font-semibold tracking-widest text-xs sm:text-sm uppercase">Services VIP</h2>
+                <h3 class="font-cinzel text-3xl sm:text-5xl font-bold text-white">L'EXPÉRIENCE SINDA AUTO</h3>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-2xl text-center space-y-4 hover:-translate-y-2 transition duration-300">
+                    <div class="w-16 h-16 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center mx-auto text-gold-400 text-2xl">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h4 class="font-cinzel text-xl font-bold text-white">Achat & Reprise d'Élite</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Évaluation transparente et immédiate de votre véhicule aux meilleurs prix du marché tunisien.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-2xl text-center space-y-4 hover:-translate-y-2 transition duration-300 border-gold-500/50">
+                    <div class="w-16 h-16 rounded-full bg-gold-500/20 border border-gold-500/50 flex items-center justify-center mx-auto text-gold-400 text-2xl">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+                    <h4 class="font-cinzel text-xl font-bold text-white">Formalités Simplifiées</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Accompagnement complet dans toutes les démarches administratives et de changement de carte grise.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-2xl text-center space-y-4 hover:-translate-y-2 transition duration-300">
+                    <div class="w-16 h-16 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center mx-auto text-gold-400 text-2xl">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h4 class="font-cinzel text-xl font-bold text-white">Inspections Rigoureuses</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Chaque véhicule mis en vente subit un contrôle minutieux (moteur, carrosserie, sécurité) avant livraison.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION AVIS CLIENTS -->
+    <section id="avis" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+        <div class="text-center space-y-3 mb-16">
+            <h2 class="text-gold-400 font-semibold tracking-widest text-xs sm:text-sm uppercase">Témoignages Vérifiés</h2>
+            <h3 class="font-cinzel text-3xl sm:text-5xl font-bold text-white">CE QUE DISENT NOS CLIENTS</h3>
+            <div class="flex items-center justify-center gap-2 pt-2">
+                <span class="text-2xl font-bold text-white font-cinzel">4.5</span>
+                <div class="flex text-gold-400 text-sm">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span class="text-gray-400 text-sm">(17 avis Google)</span>
+            </div>
+            <div class="w-24 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Avis 1 -->
+            <div class="glass-card p-6 rounded-2xl space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="font-bold text-white">Nidhal Dhifallah</h4>
+                        <span class="text-xs text-gray-400">Acheteur Vérifié</span>
+                    </div>
+                    <div class="flex text-gold-400 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm italic">
+                    « Le gérant est quelqu’un de très sérieux et honnête, ce qui est rare de nos jours et surtout dans ce domaine ! Je recommande vivement. »
+                </p>
+            </div>
+
+            <!-- Avis 2 -->
+            <div class="glass-card p-6 rounded-2xl space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="font-bold text-white">Karim B.</h4>
+                        <span class="text-xs text-gray-400">Client Fidèle</span>
+                    </div>
+                    <div class="flex text-gold-400 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm italic">
+                    « Accueil très chaleureux, showroom impeccable à Bizerte. Voiture achetée en parfait état. Service rapide et professionnel ! »
+                </p>
+            </div>
+
+            <!-- Avis 3 -->
+            <div class="glass-card p-6 rounded-2xl space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="font-bold text-white">Youssef M.</h4>
+                        <span class="text-xs text-gray-400">Acheteur Récent</span>
+                    </div>
+                    <div class="flex text-gold-400 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm italic">
+                    « Très bonne expérience avec Sinda Auto. Équipe disponible, conseils personnalisés et papiers réglés en temps record. Merci ! »
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION CONTACT & RÉSERVATION -->
+    <section id="contact" class="py-20 bg-dark-800/80 border-t border-gold-500/20 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                
+                <!-- Infos Showroom & Coordonnées -->
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-gold-400 font-semibold tracking-widest text-xs sm:text-sm uppercase">Contact & Showroom</h2>
+                        <h3 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-1">RENDEZ-NOUS VISITE</h3>
+                        <p class="text-gray-400 mt-3 text-sm leading-relaxed">
+                            Venez essayer votre futur véhicule dans notre showroom à Bizerte ou prenez contact directement par téléphone ou WhatsApp.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 rounded-xl glass-card">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/10 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Adresse Showroom</h4>
+                                <p class="text-gray-400 text-xs mt-0.5">Route de l'Autoroute Km 5, Bizerte, Tunisie</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl glass-card">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/10 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Téléphone & Support</h4>
+                                <p class="text-gray-400 text-xs mt-0.5">+216 27 602 876</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl glass-card">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/10 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Horaires d'Ouverture</h4>
+                                <p class="text-gray-400 text-xs mt-0.5">Lundi - Dimanche : 08:00 – 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulaire de réservation -->
+                <div class="glass-card p-8 rounded-2xl gold-border-glow">
+                    <h4 class="font-cinzel text-2xl font-bold text-white mb-2">Réserver un Essai / Information</h4>
+                    <p class="text-gray-400 text-xs mb-6">Remplissez ce formulaire et notre équipe vous recontactera rapidement.</p>
+
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div>
+                            <label for="fullname" class="block text-xs text-gray-300 mb-1 font-medium">Nom complet *</label>
+                            <input type="text" id="fullname" required placeholder="Votre nom" class="w-full bg-dark-900 border border-gold-500/30 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400">
+                        </div>
+
+                        <div>
+                            <label for="phone" class="block text-xs text-gray-300 mb-1 font-medium">Téléphone *</label>
+                            <input type="tel" id="phone" required placeholder="+216 XX XXX XXX" class="w-full bg-dark-900 border border-gold-500/30 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400">
+                        </div>
+
+                        <div>
+                            <label for="car-select" class="block text-xs text-gray-300 mb-1 font-medium">Véhicule d'intérêt *</label>
+                            <select id="car-select" class="w-full bg-dark-900 border border-gold-500/30 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400">
+                                <option value="BMW Série 5 Pack M (185 000 TND)">BMW Série 5 Pack M - 185 000 TND</option>
+                                <option value="Fiat 500 1.2L Auto (38 000 TND)">Fiat 500 1.2L Auto - 38 000 TND</option>
+                                <option value="Mercedes Classe C AMG (145 000 TND)">Mercedes Classe C AMG - 145 000 TND</option>
+                                <option value="Audi Q8 S-Line (310 000 TND)">Audi Q8 S-Line - 310 000 TND</option>
+                                <option value="Range Rover Evoque (210 000 TND)">Range Rover Evoque - 210 000 TND</option>
+                                <option value="Volkswagen Golf 8 R-Line (115 000 TND)">Volkswagen Golf 8 R-Line - 115 000 TND</option>
+                                <option value="Autre / Recherche Personnalisée">Autre modèle / Recherche personnalisée</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs text-gray-300 mb-1 font-medium">Message (Optionnel)</label>
+                            <textarea id="message" rows="3" placeholder="Précisez votre demande..." class="w-full bg-dark-900 border border-gold-500/30 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-dark-900 font-bold hover:brightness-110 transition text-base shadow-lg shadow-gold-500/20">
+                            Envoyer la Demande
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER PRESTIGE -->
+    <footer class="bg-dark-900 border-t border-gold-500/20 py-8 px-4 text-center text-xs text-gray-400">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-crown text-gold-400"></i>
+                <span class="font-cinzel font-bold text-white">SINDA AUTO</span>
+                <span>— L'Excellence Automobile Bizerte</span>
+            </div>
+            <p>© 2026 SINDA AUTO. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- LOGIQUE JAVASCRIPT -->
+    <script>
+        // Gestion du Menu Mobile
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Filtre des véhicules par catégorie
+        function filterCars(category, btn) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(b => {
+                b.classList.remove('bg-gold-500', 'text-dark-900');
+                b.classList.add('glass-card', 'text-gray-300');
+            });
+
+            btn.classList.remove('glass-card', 'text-gray-300');
+            btn.classList.add('bg-gold-500', 'text-dark-900');
+
+            const cards = document.querySelectorAll('.car-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Pré-remplissage du formulaire et défilement doux vers le formulaire
+        function openBookingModal(carName) {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            const selectElement = document.getElementById('car-select');
+            if (selectElement) {
+                for (let i = 0; i < selectElement.options.length; i++) {
+                    if (selectElement.options[i].value.includes(carName)) {
+                        selectElement.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Système de notification Toast
+        function showToast(message) {
+            const toastContainer = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'glass-card border border-gold-500/50 text-white px-5 py-4 rounded-xl shadow-2xl flex items-center gap-3 transition-all duration-300 transform translate-x-10 opacity-0 pointer-events-auto';
+            toast.innerHTML = `
+                <i class="fa-solid fa-circle-check text-gold-400 text-xl"></i>
+                <p class="text-sm font-medium">${message}</p>
+            `;
+
+            toastContainer.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-x-10', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-x-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // Gestion de la soumission du formulaire
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const fullName = document.getElementById('fullname').value;
+            const carSelected = document.getElementById('car-select').value;
+
+            showToast(`Merci ${fullName} ! Votre demande concernant "${carSelected}" a été enregistrée.`);
+            document.getElementById('contact-form').reset();
+        }
+    </script>
+</body><
+</html>
